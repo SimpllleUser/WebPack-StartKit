@@ -1,33 +1,40 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-module.export = {
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, './dist')
     },
     devServer: {
         contentBase: './dist'
     },
     module: {
         rules: [{
-                test: /\.css/,
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.css$/,
                 use: [
                     'style-loader',
                     'css-loader'
                 ]
-            },
-            {
-                test: /\.(pngh|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
             }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Output Managment'
-        })
-    ]
-}
+    // plugins: [
+    //     new HtmlWebpackPlugin("./dist/index.html")
+    // ]
+};

@@ -1,1 +1,2 @@
-import '../src/css/main.css'
+import './scss/main.scss';
+// import '~bootsrap'

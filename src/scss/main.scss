@@ -1,0 +1,10 @@
+@import '~bootstrap';
+$body-color: rgb(61, 65, 82);
+$test: green;
+body {
+    color: $body-color;
+    background-color: red($color: #000000);
+    p {
+        border: 1px solid $test;
+    }
+}
